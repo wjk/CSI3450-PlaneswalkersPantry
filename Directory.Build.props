@@ -1,0 +1,10 @@
+<Project>
+  <PropertyGroup>
+    <RepoRootPath>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)\'))</RepoRootPath>
+    <BaseIntermediateOutputPath Condition="'$(_TargetAssemblyProjectName)' != ''">$(RepoRootPath)obj\$(_TargetAssemblyProjectName)\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath Condition="'$(_TargetAssemblyProjectName)' == ''">$(RepoRootPath)obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <BaseOutputPath Condition="'$(_TargetAssemblyProjectName)' != ''">$(RepoRootPath)bin\$(_TargetAssemblyProjectName)\</BaseOutputPath>
+    <BaseOutputPath Condition="'$(_TargetAssemblyProjectName)' == ''">$(RepoRootPath)bin\$(MSBuildProjectName)\</BaseOutputPath>
+    <PackageOutputPath>$(RepoRootPath)bin\Packages\$(Configuration)\</PackageOutputPath>
+  </PropertyGroup>
+</Project>
