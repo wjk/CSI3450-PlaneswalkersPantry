@@ -1,23 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
 
+using PlaneswalkersPantry.Models;
+
 namespace PlaneswalkersPantry.Controllers;
 
 public class CardController : Controller
 {
     public IActionResult Index()
     {
-        return RedirectToAction("SearchForm");
-    }
-
-    // GET
-    public IActionResult SearchForm()
-    {
         return View();
     }
 
     [HttpPost]
-    public IActionResult PerformSearch()
+    [ValidateAntiForgeryToken]
+    public IActionResult Search(CardSearchModel model)
     {
+        if (!ModelState.IsValid) return RedirectToAction("Index");
 
+        throw new NotImplementedException();
     }
 }
