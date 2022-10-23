@@ -16,3 +16,25 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.form-block {
+    border-radius: 5pt;
+}
+
+.form-block-content {
+    padding: 15px;
+    border-style: solid;
+    border-color: var(--bs-gray-600);
+    border-width: 1px 1px 0 1px;
+    background-color: var(--bs-gray-200);
+    border-radius: 5pt 5pt 0 0;
+}
+
+.form-block-footer {
+    padding: 15px;
+    background-color: var(--bs-gray-400);
+    border-radius: 0 0 5pt 5pt;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: var(--bs-gray-600);
+}
