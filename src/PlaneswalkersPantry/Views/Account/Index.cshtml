@@ -7,7 +7,8 @@
 
 @if (Model.IsInvalid)
 {
-    <p class="bg-danger">
+    <p id="login-error-box">
+        <span class="screenreader-only">Error:</span>
         Your user name and/or password was not recognized.
     </p>
 }
