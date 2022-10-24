@@ -23,7 +23,6 @@ public class AccountController : Controller
     public IActionResult CreateUser(NewUserModel model)
     {
         LoginModel model2 = new() { UserName = model.UserName, Password = model.Password };
-
         PasswordHasher<LoginModel> hasher = new PasswordHasher<LoginModel>();
         var hash = hasher.HashPassword(model2, model2.Password);
 
@@ -45,7 +44,6 @@ public class AccountController : Controller
     public IActionResult Index(LoginModel model)
     {
         PasswordHasher<LoginModel> hasher = new PasswordHasher<LoginModel>();
-        var hash = hasher.HashPassword(model, model.Password);
 
         Account? account = Account.LookUp(model.UserName!);
         if (account == null)
@@ -54,16 +52,15 @@ public class AccountController : Controller
             return View(model);
         }
 
-        if (account.HashedPassword == hash)
+        var result = hasher.VerifyHashedPassword(model, account.HashedPassword, model.Password);
+        if (result != PasswordVerificationResult.Failed)
         {
             HttpContext.Session.SetString("AuthenticatedUser", account.UserName!);
             return LocalRedirect("/Home/Index");
         }
-        else
-        {
-            model.IsInvalid = true;
-            return View(model);
-        }
+
+        model.IsInvalid = true;
+        return View(model);
     }
 
     public IActionResult LogOut()
