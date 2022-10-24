@@ -11,7 +11,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddTransient<LoginManager>();
+builder.Services.AddTransient<SessionAccess>();
 
 builder.Services.AddSession(options =>
 {

@@ -1,0 +1,26 @@
+@model LoginModel;
+@inject SessionAccess Session;
+
+@{
+    ViewData["Title"] = "Log In";
+}
+
+@if (Model.IsInvalid)
+{
+    <p class="bg-danger">
+        Your user name and/or password was not recognized.
+    </p>
+}
+
+<form asp-action="Index" asp-controller="Account" method="post" class="form-block">
+    <div class="form-block-content">
+        <label asp-for="UserName" class="control-label"></label>
+        <input asp-for="UserName" class="form-control" type="text">
+        <label asp-for="Password" class="control-label"></label>
+        <input asp-for="Password" class="form-control" type="password">
+    </div>
+
+    <div class="form-block-footer">
+        <button type="submit" class="btn btn-primary" asp-action="Index" asp-controller="Account">Log In</button>
+    </div>
+</form>
