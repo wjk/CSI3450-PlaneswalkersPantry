@@ -7,13 +7,6 @@ namespace PlaneswalkersPantry.Controllers;
 
 public class AccountController : Controller
 {
-    private readonly HttpContext HttpContext;
-
-    public AccountController(IHttpContextAccessor accessor)
-    {
-        this.HttpContext = accessor.HttpContext!;
-    }
-
     // GET
     public IActionResult Index()
     {
