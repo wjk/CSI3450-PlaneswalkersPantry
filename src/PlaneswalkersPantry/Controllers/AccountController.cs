@@ -11,7 +11,34 @@ public class AccountController : Controller
     // GET
     public IActionResult Index()
     {
-        return View(new LoginModel());
+        return View();
+    }
+
+    public IActionResult Register(NewUserModel model)
+    {
+        return View(model);
+    }
+
+    [HttpPost, ValidateAntiForgeryToken]
+    public IActionResult CreateUser(NewUserModel model)
+    {
+        LoginModel model2 = new() { UserName = model.UserName, Password = model.Password };
+
+        PasswordHasher<LoginModel> hasher = new PasswordHasher<LoginModel>();
+        var hash = hasher.HashPassword(model2, model2.Password);
+
+        Account? account = Account.LookUp(model.UserName);
+        if (account != null)
+        {
+            model.State = NewUserModel.FormState.DuplicateUserName;
+            return RedirectToAction("Register", model);
+        }
+
+        account = new() { UserName = model.UserName, HashedPassword = hash, UserType = "NORMAL" };
+        account.SaveNew();
+
+        HttpContext.Session.SetString("AuthenticatedUser", account.UserName);
+        return LocalRedirect("/Home/Index");
     }
 
     [HttpPost]

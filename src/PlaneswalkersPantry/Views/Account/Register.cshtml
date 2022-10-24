@@ -1,0 +1,42 @@
+@using PlaneswalkersPantry.Models.ViewModels
+@model PlaneswalkersPantry.Models.ViewModels.NewUserModel;
+
+@{
+    ViewData["Title"] = "New User";
+}
+
+@if (Model != null && Model.State == NewUserModel.FormState.DuplicateUserName)
+{
+    <p id="login-error-box">
+        <span class="screenreader-only">Error:</span>
+        The user name you selected already exists. Please choose another name;
+    </p>
+}
+
+<form asp-action="CreateUser" asp-controller="Account" method="post" class="form-block">
+    <div class="form-block-content">
+        <div class="form-group">
+            <label asp-for="UserName" class="control-label"></label>
+            <input asp-for="UserName" class="form-control" type="text">
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password" class="control-label"></label>
+            <input asp-for="Password" class="form-control" type="password">
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password2" class="control-label"></label>
+            <input asp-for="Password2" class="form-control" type="password">
+            <span asp-validation-for="Password2" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-block-footer">
+        <button type="submit" class="btn btn-primary" asp-action="CreateUser" asp-controller="Account">
+            Create Account
+        </button>
+    </div>
+</form>

@@ -5,7 +5,7 @@
     ViewData["Title"] = "Log In";
 }
 
-@if (Model.IsInvalid)
+@if (Model != null && Model.IsInvalid)
 {
     <p id="login-error-box">
         <span class="screenreader-only">Error:</span>
