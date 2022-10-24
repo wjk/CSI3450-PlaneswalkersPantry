@@ -6,13 +6,13 @@ namespace PlaneswalkersPantry.Models.ViewModels;
 
 public sealed class NewUserModel
 {
-    [Required, Display(Name = "User name:")]
+    [Required, Display(Name = "User Name")]
     public string UserName { get; set; } = null!;
 
-    [Required, Display(Name = "Password:"), Compare(nameof(Password2))]
+    [Required, Display(Name = "Password"), Compare(nameof(Password2))]
     public string Password { get; set; } = null!;
 
-    [Required, Display(Name = "Confirm Password:")]
+    [Required, Display(Name = "Confirm Password")]
     public string Password2 { get; set; } = null!;
 
     [ValidateNever]
