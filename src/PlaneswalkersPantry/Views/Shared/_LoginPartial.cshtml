@@ -5,7 +5,9 @@
 {
 
     <li class="nav-item">
-        <form  class="form-inline" asp-controller="Account" asp-action="LogOut">
+        <form class="form-inline" asp-controller="Account" asp-action="LogOut">
+            @* TODO: This text is displayed above the logout button. It should be to the left. *@
+            Hello <b>@Session.Session.GetString("AuthenticatedUser")</b>.
             <button type="submit" class="nav-link btn btn-link text-dark">Log Out</button>
         </form>
     </li>
