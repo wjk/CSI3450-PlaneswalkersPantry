@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Check Out</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        header {
+            text-align: center;
+            font-size: x-large;
+        }
+        table, th, td {
+        border:1px solid black;
+        text-align: center;
+        }
+    </style>
+</head>
+
+<header>
+    <h2>Planeswalker’s Pantry</h2>
+</header>
+
+<form>
+    <label for="search">Search: </label>
+    <input type="text" id="search" name="search">
+    <a href="../html/search.html">
+    <input type="submit" value="Submit"></a>
+</form>
+
+<hr>
+
+<body>
+
+    <table style="width:100%">
+
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Remove</th>
+            <th>Qauntity</th>
+        </tr>
+    
+        <tr>
+            <td> 
+                <a href="../html/card.html">
+                <img src="../images/magiccard.jpg" alt="Magic Card" style="width:6%">
+                </a> 
+            </td>
+            <td>Card</td>
+            <td>
+                <form>
+                    <input type="submit" value="Remove">
+                </form>
+            </td>
+            <td>10</td>
+        </tr>
+    
+        <tr>
+            <td>
+                <a href="../html/deck.html">
+                <img src="../images/deck.png" alt="Magic Deck" style="width:6%">
+                </a> 
+            </td>
+            <td>Deck</td>
+            <td>
+                <form>
+                    <input type="submit" value="Remove">
+                </form>
+            </td>
+            <td>1</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
