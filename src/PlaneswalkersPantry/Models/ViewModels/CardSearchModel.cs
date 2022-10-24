@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace PlaneswalkersPantry.Models;
+namespace PlaneswalkersPantry.Models.ViewModels;
 
 public class CardSearchModel
 {

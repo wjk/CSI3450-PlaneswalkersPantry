@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using PlaneswalkersPantry.Models;
+using PlaneswalkersPantry.Models.ViewModels;
 
 namespace PlaneswalkersPantry.Controllers;
 

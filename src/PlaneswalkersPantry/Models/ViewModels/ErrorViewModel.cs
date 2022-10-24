@@ -1,4 +1,4 @@
-namespace PlaneswalkersPantry.Models;
+namespace PlaneswalkersPantry.Models.ViewModels;
 
 public class ErrorViewModel
 {
