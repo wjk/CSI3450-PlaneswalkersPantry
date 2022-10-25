@@ -6,10 +6,14 @@ public sealed class Account
 {
     public static Account? LookUp(string userName)
     {
-        MySqlCommand command = new MySqlCommand("SELECT * FROM USER WHERE USER_NAME = @Name", Database.DatabaseConnection);
+        using MySqlConnection conn = Database.CreateConnection();
+        conn.Open();
+
+        using MySqlCommand command = new MySqlCommand("SELECT * FROM USER WHERE USER_NAME = @Name", conn);
         command.Parameters.Add(new MySqlParameter("@Name", userName));
 
-        var results = command.ExecuteReader();
+        using var results = command.ExecuteReader();
+        results.Read();
         if (!results.HasRows) return null; // user name not found
 
         Account account = new Account()
@@ -28,6 +32,20 @@ public sealed class Account
 
         results.Close();
         return account;
+    }
+
+    public void SaveNew()
+    {
+        using MySqlConnection conn = Database.CreateConnection();
+        conn.Open();
+
+        using MySqlCommand command = new MySqlCommand("INSERT INTO USER (USER_NAME, HASHED_PASSWORD, USER_TYPE)" +
+                                                "VALUES (@name, @pwd, @type)", conn);
+        command.Parameters.Add(new MySqlParameter("name", UserName));
+        command.Parameters.Add(new MySqlParameter("pwd", HashedPassword));
+        command.Parameters.Add(new MySqlParameter("type", UserType));
+
+        command.ExecuteNonQuery();
     }
 
     public string? UserName { get; set; }
