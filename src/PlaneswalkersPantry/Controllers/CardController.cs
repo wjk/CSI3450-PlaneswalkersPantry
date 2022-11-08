@@ -8,15 +8,7 @@ public class CardController : Controller
 {
     public IActionResult Index()
     {
-        return View();
-    }
-
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public IActionResult Search(CardSearchModel model)
-    {
-        if (!ModelState.IsValid) return RedirectToAction("Index");
-
-        throw new NotImplementedException();
+        CardBrowseViewModel model = new CardBrowseViewModel();
+        return View(model);
     }
 }
