@@ -16,6 +16,12 @@
             </p>
             <p>
                 <b>@Html.Encode(card.TypeLine)</b>
+                @if (!string.IsNullOrEmpty(card.ManaCost))
+                {
+                    <span>
+                        &mdash; @Html.Encode((card.ManaCost))
+                    </span>
+                }
             </p>
             <p>
                 @card.RulesText
