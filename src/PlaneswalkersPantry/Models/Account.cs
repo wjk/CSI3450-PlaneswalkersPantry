@@ -7,8 +7,6 @@ public sealed class Account
     public static Account? LookUp(string userName)
     {
         using MySqlConnection conn = Database.CreateConnection();
-        conn.Open();
-
         using MySqlCommand command = new MySqlCommand("SELECT * FROM USER WHERE USER_NAME = @Name", conn);
         command.Parameters.Add(new MySqlParameter("@Name", userName));
 
@@ -37,8 +35,6 @@ public sealed class Account
     public void SaveNew()
     {
         using MySqlConnection conn = Database.CreateConnection();
-        conn.Open();
-
         using MySqlCommand command = new MySqlCommand("INSERT INTO USER (USER_NAME, HASHED_PASSWORD, USER_TYPE)" +
                                                 "VALUES (@name, @pwd, @type)", conn);
         command.Parameters.Add(new MySqlParameter("name", UserName));
