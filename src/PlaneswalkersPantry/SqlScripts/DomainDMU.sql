@@ -1,4 +1,36 @@
 INSERT INTO DECK (DECK_NUMBER, DECK_TITLE, DECK_COLORS) VALUES (10, 'DomainDMU', 'WUBRG');
 
-INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED) VALUES (10001, 'Llanowar Greenwidow', '2G', 'Reach, trample.
-Domain — 7G: Return Llanowar Greenwidow from your graveyard to the battlefield tapped. It gains "If this permanent would leave the battlefield, exile it instead of putting it anywhere else." This ability costs 1 less to activate for each basic land type among lands you control.', NULL, NULL, 'DMU', 'R', 4, 3, 'Creature - Spider', 17);
+-- INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED) VALUES (10001, 'Llanowar Greenwidow', '2G', 'Reach, trample.\n\nDomain - 7G: Return Llanowar Greenwidow from your graveyard to the battlefield tapped. It gains "If this permanent would leave the battlefield, exile it instead of putting it anywhere else." This ability costs 1 less to activate for each basic land type among lands you control.', NULL, NULL, '###', 'R', 4, 3, 'Creature - Spider', 17);
+
+-- CARD_NUMBER needs to be a unique integer. I know of no way to get MySQL to generate these for us.
+-- CARD_TITLE is the bolded text in the top-left of each card.
+-- MANA_COST is the symbols from the top-right of the card. Enter numbers and "X" as themselves.
+--   For the colored symbols, use the following letters instead:
+--     small white sun: W
+--     blue raindrop: U
+--     black skull: B
+--     red wave: R
+--     green tree: G
+--     small gray diamond: C
+--   If you see any other symbols in this area, please message me and I will convert them for you.
+-- RULES_TEXT: This is the text in the bottom-middle area of the card. Use your best judgment to
+--   convert the formatting; remember that this field is plain text. You will need to place the
+--   entire text all on one line, unfortunately (if I try to split it, I get syntax errors). I
+--   highly recommend turning on line-wrapping in your editor of choice. If there is a paragraph
+--   break on the card, type '\n\n'. If there is a horizontal line within this box, this is the
+--   text on the top. If there is only italicized text, put ''.
+-- FLAVOR_TEXT: If there is a horizontal line in the bottom-middle area, this is the text on the
+--   bottom. It will always be italicized. If there is only italic text, put it here. If there
+--   is no horizontal line, put NULL.
+-- CARD_IMAGE: Always put NULL.
+-- SET_CODE: Put '###' here and I will fix this column up later. This is the most time-consuming
+--   piece of information to extract from a card.
+-- RARITY_CODE: Look at the small symbol to right-hand side of the bar in the middle. If this
+--   symbol is black, put C. If it is silver, put U. If it is gold, put R. If it is a kind of
+--   metallic red color, put M. If there is no symbol there at all, put C.
+-- POWER: There may be two numbers set apart at the bottom-right corner of the card, separated
+--   by a slash. This is the number on the left. If there are no numbers, put NULL.
+-- TOUGHNESS: This is the number on the right of the slash. If there are no numbers, put NULL.
+-- TYPE_LINE: On the bar at the middle of the card, there should be some text on the left.
+--   Copy this line of text verbatim. There should always be text here.
+-- NUMBER_OWNED: Pick a random integer. Put it here.
