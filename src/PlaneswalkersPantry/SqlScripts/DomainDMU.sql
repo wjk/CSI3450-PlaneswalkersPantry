@@ -18,7 +18,9 @@ INSERT INTO DECK (DECK_NUMBER, DECK_TITLE, DECK_COLORS) VALUES (10, 'DomainDMU',
 --   entire text all on one line, unfortunately (if I try to split it, I get syntax errors). I
 --   highly recommend turning on line-wrapping in your editor of choice. If there is a paragraph
 --   break on the card, type '\n\n'. If there is a horizontal line within this box, this is the
---   text on the top. If there is only italicized text, put ''.
+--   text on the top. If there is only italicized text, put ''. If you see any numbers in round
+--   circles, type them as-is. If you see small circular colored symbols, use the letters described
+--   above under MANA_COST. If you see a small circular arrow, type the word "tap".
 -- FLAVOR_TEXT: If there is a horizontal line in the bottom-middle area, this is the text on the
 --   bottom. It will always be italicized. If there is only italic text, put it here. If there
 --   is no horizontal line, put NULL.
