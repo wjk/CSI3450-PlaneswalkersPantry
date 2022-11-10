@@ -9,7 +9,7 @@ VALUES (20002, 'Sphinx of Clear Skies', '3BB', 'Flying, ward 2\n\nDomain - Whene
 -- implementing this feature would add significant time to the implementation. Therefore, I am only listing
 -- the "front" (playable) side in this database.
 INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
-VALUES (20003, 'The Kami War', '1WUBRG', '(As this Saga enters play and after your draw step, add a lore counter.)\n\nI - Exile target nonland permanent an opponent controls.\n\nII - Return up to one other target nonland permanent to its owner\'s hand. Then each opponent discards a card.\n\n(This is a double-faced card.)', NULL, NULL, 'NEO', 'M', NULL, NULL, 'Enchantment - Saga', 2);
+VALUES (20003, 'The Kami War', '1WUBRG', '(As this Saga enters play and after your draw step, add a lore counter.)\n\nI - Exile target nonland permanent an opponent controls.\n\nII - Return up to one other target nonland permanent to its owner\'s hand. Then each opponent discards a card.\n\nIII - Exile this Saga, then return it to the battlefield transformed under your control.\n\n(This is a double-faced card.)', NULL, NULL, 'NEO', 'M', NULL, NULL, 'Enchantment - Saga', 2);
 
 INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
 VALUES (20004, 'Jodah\'s Codex', '5', 'Domain - 5, Tap: Draw a card. This ability costs 1 less to activate for each basic land among lands you control.', 'If you remember nothing else of our world\'s history, remember this: Phyrexians can be defeated.\n\n- Jodah', NULL, 'DMU', 'U', NULL, NULL, 'Artifact', 2);
