@@ -2,7 +2,7 @@ USE PlaneswalkersPantry;
 
 
 INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
-VALUES (1001, 'Hullbreaker Horror', '5UU', 'Flash\n\nThis spell can\'t be countered.\n\nWhenever you cast a spell, choose up to one —\n\nReturn target spell you don\'t control to its owner\'s hand.Return target nonland permanent to its owner\'s hand.', NULL, NULL, 'VOW', 'R', 7, 8, 'Creature - Kraken Horror', 5);
+VALUES (1001, 'Hullbreaker Horror', '5UU', 'Flash\n\nThis spell can\'t be countered.\n\nWhenever you cast a spell, choose up to one —\n\nReturn target spell you don\'t control to its owner\'s hand.\n\nReturn target nonland permanent to its owner\'s hand.', NULL, NULL, 'VOW', 'R', 7, 8, 'Creature - Kraken Horror', 5);
 
 INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
 VALUES (1002, 'Essence Scatter', '1UU', 'Counter target creature spell.', '"Phyrexians pollute everything they touch, so the solution is simple: don\'t let them touch anything."\n\n—Teferi', NULL, 'M10', 'C', NULL, NULL, 'Instant', 50);
