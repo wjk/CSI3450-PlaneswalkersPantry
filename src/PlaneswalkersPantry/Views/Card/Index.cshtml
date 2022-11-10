@@ -10,7 +10,7 @@
     @foreach (Card card in Model.Cards)
     {
         <div class="row card-details">
-            <h4>@Html.Encode(card.Title) (<i>@Html.Encode(Model.CardSets[card.SetCode!].SetName)</i>)</h4>
+            <h4>@card.Title (<i>@Model.CardSets[card.SetCode!].SetName</i>)</h4>
             <p>
                 @card.NumberOwned.ToString("D") Owned
             </p>
