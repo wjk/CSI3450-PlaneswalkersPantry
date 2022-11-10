@@ -9,10 +9,10 @@ VALUES (20002, 'Sphinx of Clear Skies', '3BB', 'Flying, ward 2\n\nDomain - Whene
 -- implementing this feature would add significant time to the implementation. Therefore, I am only listing
 -- the "front" (playable) side in this database.
 INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
-VALUES (20003, 'The Kami War', '1WUBRG', '(As this Saga enters play and after your draw step, add a lore counter.)\n\nI - Exile target nonland permanent an opponent controls\n\nII - Return up to one other target nonland permanent to its owner\'s hand. Then each opponent discards a card.\n\n(This is a double-faced card.)', NULL, NULL, 'NEO', 'M', NULL, NULL, 'Enchantment - Saga', 2);
+VALUES (20003, 'The Kami War', '1WUBRG', '(As this Saga enters play and after your draw step, add a lore counter.)\n\nI - Exile target nonland permanent an opponent controls.\n\nII - Return up to one other target nonland permanent to its owner\'s hand. Then each opponent discards a card.\n\n(This is a double-faced card.)', NULL, NULL, 'NEO', 'M', NULL, NULL, 'Enchantment - Saga', 2);
 
 INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
-VALUES (20004, 'Jodah\'s Codex', '5', 'Domain - 5, Tap: Draw a card. This ability costs 1 less to activate for each basic land among lands you control', 'If you remember nothing else of our world\'s history, remember this: Phyrexians can be defeated.\n\n- Jodah', NULL, 'DMU', 'U', NULL, NULL, 'Artifact', 2);
+VALUES (20004, 'Jodah\'s Codex', '5', 'Domain - 5, Tap: Draw a card. This ability costs 1 less to activate for each basic land among lands you control.', 'If you remember nothing else of our world\'s history, remember this: Phyrexians can be defeated.\n\n- Jodah', NULL, 'DMU', 'U', NULL, NULL, 'Artifact', 2);
 
 INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
 VALUES (20005, 'The Celestus', '3', 'If it\'s neither day nor night, it becomes day as The Celestus enters the battlefield.\n\nTap: Add one mana of any color.\n\n3, Tap: If it\'s night, it becomes day. Otherwise, it becomes night. Activate only as a sorcery.\n\nWhenever day becomes night or night becomes day, you gain 1 life. You may draw a card. If you do, discard a card.', NULL, NULL, 'MID', 'R', NULL, NULL, 'Legendary Artifact', 1);
