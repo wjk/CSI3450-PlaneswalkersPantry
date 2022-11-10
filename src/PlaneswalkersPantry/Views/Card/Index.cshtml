@@ -15,11 +15,11 @@
                 @card.NumberOwned.ToString("D") Owned
             </p>
             <p>
-                <b>@Html.Encode(card.TypeLine)</b>
+                <b>@card.TypeLine</b>
                 @if (!string.IsNullOrEmpty(card.ManaCost))
                 {
                     <span>
-                        &mdash; @Html.Encode(card.ManaCost)
+                        &mdash; @card.ManaCost
                     </span>
                 }
             </p>
@@ -37,7 +37,7 @@
             @if (!string.IsNullOrWhiteSpace(card.Power) && !string.IsNullOrEmpty(card.Toughness))
             {
                 <p>
-                    @Html.Encode(card.Power)&nbsp;/&nbsp;@Html.Encode(card.Toughness)
+                    @card.Power&nbsp;/&nbsp;card.Toughness
                 </p>
             }
         </div>
