@@ -58,29 +58,31 @@ VALUES (18, 'Island', '', 'Tap: Add B.', NULL, NULL, 'LEA', 'C', NULL, NULL, 'La
 INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
 VALUES (19, 'Unlicensed Hearse', '2', 'Tap: Exile up to two target cards from a single graveyard.\n\nUnlicensed Hearse\'s power and toughness are each equal to the number of cards exiled with it.\n\nCrew 2', NULL, NULL, 'SNC', 'R', '*', '*', 'Artifact - Vehicle', 5);
 
-INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
-VALUES (20, 'Spell Pierce', 'U', 'Counter target noncreature spell unless its controller pays 2.', '"If you make me spill my drink, you\'re buying me a new one."', NULL, '###', 'C', NULL, NULL, 'Instant', 50);
+-- The below cards are on the deck's sideboard, which is not yet implemented in Planeswalker's Pantry.
 
-INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
-VALUES (21, 'Reckoner Bankbuster', '2', 'Reckoner Bankbuster enters the battlefield with three charge counters on it.\n\n2, Tap, Remove a charge counter from Reckoner Bankbuster: Draw a card. Then if there are no charge counters on Reckoner Bankbuster, create a Treasure token and a 1/1 colorless Pilot creature token with "This creature crews Vehicles as though its power were 2 greater."\n\nCrew 3', NULL, NULL, '###', 'R', 4, 4, 'Artifact - Vehicle', 5);
+-- INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
+-- VALUES (20, 'Spell Pierce', 'U', 'Counter target noncreature spell unless its controller pays 2.', '"If you make me spill my drink, you\'re buying me a new one."', NULL, '###', 'C', NULL, NULL, 'Instant', 50);
 
-INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
-VALUES (22, 'Negate', '1U', 'Counter target noncreature spell.','"It\'s frustrating, isn\'t it, to be so weak and ineffectual? Don\'t worry, you\'ll be compleat soon enough."\n\n—Rona' , NULL, '###', 'C', NULL, NULL, 'Instant', 50);
+-- INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
+-- VALUES (21, 'Reckoner Bankbuster', '2', 'Reckoner Bankbuster enters the battlefield with three charge counters on it.\n\n2, Tap, Remove a charge counter from Reckoner Bankbuster: Draw a card. Then if there are no charge counters on Reckoner Bankbuster, create a Treasure token and a 1/1 colorless Pilot creature token with "This creature crews Vehicles as though its power were 2 greater."\n\nCrew 3', NULL, NULL, '###', 'R', 4, 4, 'Artifact - Vehicle', 5);
 
-INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
-VALUES (23, 'Fires of Victory', '1R', 'Kicker 2B (You may pay an additional 2B as you cast this spell.)\n\nIf this spell was kicked, draw a card. Fires of Victory deals damage to target creature or planeswalker equal to the number of cards in your hand.', 'The drums and horns were expected, but the goblin dance was a pleasant surprise.', NULL, '###', 'U', NULL, NULL, 'Instant', 25);
+-- INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
+-- VALUES (22, 'Negate', '1U', 'Counter target noncreature spell.','"It\'s frustrating, isn\'t it, to be so weak and ineffectual? Don\'t worry, you\'ll be compleat soon enough."\n\n—Rona' , NULL, '###', 'C', NULL, NULL, 'Instant', 50);
 
-INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
-VALUES (24, 'Essence Scatter', '1UU', 'Counter target creature spell.', '"Phyrexians pollute everything they touch, so the solution is simple: don\'t let them touch anything."\n\n—Teferi', NULL, '###', 'C', NULL, NULL, 'Instant', 50);
+-- INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
+-- VALUES (23, 'Fires of Victory', '1R', 'Kicker 2B (You may pay an additional 2B as you cast this spell.)\n\nIf this spell was kicked, draw a card. Fires of Victory deals damage to target creature or planeswalker equal to the number of cards in your hand.', 'The drums and horns were expected, but the goblin dance was a pleasant surprise.', NULL, '###', 'U', NULL, NULL, 'Instant', 25);
 
-INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
-VALUES (25, 'Burn Down the House', '3RR', 'Choose one —\n\nBurn Down the House deals 5 damage to each creature and each planeswalker.\n\nCreate three 1/1 red Devil creature tokens with "When this creature dies, it deals 1 damage to any target." They gain haste until end of turn.', NULL, NULL, '###', 'R', NULL, NULL, 'Sorcery', 5);
+-- INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
+-- VALUES (24, 'Essence Scatter', '1UU', 'Counter target creature spell.', '"Phyrexians pollute everything they touch, so the solution is simple: don\'t let them touch anything."\n\n—Teferi', NULL, '###', 'C', NULL, NULL, 'Instant', 50);
 
-INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
-VALUES (26, 'Disdainful Stroke', '1U', 'Counter target spell with mana value 4 or greater.', '"I\'ve known for a year that you would cast this exact spell, at this exact spot, at this exact time."\n\n—Raffine', NULL, '###', 'C', NULL, NULL, 'Instant', 50);
+-- INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
+-- VALUES (25, 'Burn Down the House', '3RR', 'Choose one —\n\nBurn Down the House deals 5 damage to each creature and each planeswalker.\n\nCreate three 1/1 red Devil creature tokens with "When this creature dies, it deals 1 damage to any target." They gain haste until end of turn.', NULL, NULL, '###', 'R', NULL, NULL, 'Sorcery', 5);
 
-INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
-VALUES (27, 'Smoldering Egg', '1R', 'Defender\n\nWhenever you cast an instant or sorcery spell, put a number of ember counters on Smoldering Egg equal to the amount of mana spent to cast that spell. Then if Smoldering Egg has seven or more ember counters on it, remove them and transform Smoldering Egg.', NULL, NULL, '###', 'R', NULL, NULL, 'Creature - Dragon Egg', 5);
+-- INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
+-- VALUES (26, 'Disdainful Stroke', '1U', 'Counter target spell with mana value 4 or greater.', '"I\'ve known for a year that you would cast this exact spell, at this exact spot, at this exact time."\n\n—Raffine', NULL, '###', 'C', NULL, NULL, 'Instant', 50);
 
-INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
-VALUES (28, 'Fable of the Mirror-Breaker', '2R', '(As this Saga enters and after your draw step, add a lore counter.)\n\nI — Create a 2/2 red Goblin Shaman creature token with "Whenever this creature attacks, create a Treasure token."\n\nII — You may discard up to two cards. If you do, draw that many cards.\n\nIII — Exile this Saga, then return it to the battlefield transformed under your control.', NULL, NULL, '###', 'R', NULL, NULL, 'Enchantment - Saga', 5);
+-- INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
+-- VALUES (27, 'Smoldering Egg', '1R', 'Defender\n\nWhenever you cast an instant or sorcery spell, put a number of ember counters on Smoldering Egg equal to the amount of mana spent to cast that spell. Then if Smoldering Egg has seven or more ember counters on it, remove them and transform Smoldering Egg.', NULL, NULL, '###', 'R', NULL, NULL, 'Creature - Dragon Egg', 5);
+
+-- INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
+-- VALUES (28, 'Fable of the Mirror-Breaker', '2R', '(As this Saga enters and after your draw step, add a lore counter.)\n\nI — Create a 2/2 red Goblin Shaman creature token with "Whenever this creature attacks, create a Treasure token."\n\nII — You may discard up to two cards. If you do, draw that many cards.\n\nIII — Exile this Saga, then return it to the battlefield transformed under your control.', NULL, NULL, '###', 'R', NULL, NULL, 'Enchantment - Saga', 5);
