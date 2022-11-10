@@ -53,9 +53,3 @@ VALUES (7, 'Chandra, Pyromaster', '2RR', '+1: Chandra, Pyromaster deals 1 damage
 INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
 VALUES (8, 'Chief Engineer', '1B', 'Artifact spells you cast have convoke. (Your creatures can help cast those spells. Each creature you tap while casting an artifact spell pays for 1 or one mana of that creature''s color.)', 'An eye for detail, a mind for numbers, a soul of clockwork.',
         NULL, 'M15', 'R', 1, 3, 'Creature - Vedalken Artificer', 3);
-
-
-INSERT INTO DECK (DECK_NUMBER, DECK_TITLE, DECK_COLORS) VALUES (1, 'Sample Blue Deck', 'B');
-INSERT INTO CARD_IN_DECK (DECK_NUMBER, CARD_NUMBER, COUNT) VALUES (1, 2, 10);
-INSERT INTO CARD_IN_DECK (DECK_NUMBER, CARD_NUMBER, COUNT) VALUES (1, 8, 4);
-INSERT INTO CARD_IN_DECK (DECK_NUMBER, CARD_NUMBER, COUNT) VALUES (1, 1, 1);
