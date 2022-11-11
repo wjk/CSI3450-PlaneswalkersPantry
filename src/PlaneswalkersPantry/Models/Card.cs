@@ -13,10 +13,18 @@ public class Card
     public string? FlavorText { get; set; }
     [Required]
     public string? SetCode { get; set; }
-    public string? Rarity { get; set; }
+    public CardRarity Rarity { get; set; } = CardRarity.Common;
     public string? Power { get; set; }
     public string? Toughness { get; set; }
     public string? TypeLine { get; set; }
     [Required]
     public uint NumberOwned { get; set; }
+}
+
+public enum CardRarity
+{
+    Common,
+    Uncommon,
+    Rare,
+    MythicRare
 }

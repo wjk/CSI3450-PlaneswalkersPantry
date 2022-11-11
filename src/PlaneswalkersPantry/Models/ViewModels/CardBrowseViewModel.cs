@@ -59,10 +59,10 @@ public class CardBrowseViewModel
                 card.SetCode = results.GetString("SET_CODE");
                 card.Rarity = results.GetString("RARITY_CODE") switch
                 {
-                    "C" => "Common",
-                    "U" => "Uncommon",
-                    "R" => "Rare",
-                    "M" => "Mythic Rare",
+                    "C" => CardRarity.Common,
+                    "U" => CardRarity.Uncommon,
+                    "R" => CardRarity.Rare,
+                    "M" => CardRarity.MythicRare,
                     _ => throw new ArgumentException($"Unrecognized RARITY_CODE for card {card.Title}")
                 };
                 card.Power = FixDBNull(results, "POWER");
