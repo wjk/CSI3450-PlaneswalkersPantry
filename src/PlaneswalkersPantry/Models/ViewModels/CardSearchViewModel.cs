@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 using MySqlConnector;
@@ -11,29 +12,24 @@ public class CardSearchViewModel
     public CardSearchViewModel()
     {
         using MySqlConnection conn = Database.CreateConnection();
-        using MySqlCommand command = new MySqlCommand("SELECT * FROM CARD_SET;", conn);
-
-        using var results = command.ExecuteReader();
-        bool hasRows = results.Read();
-
-        List<(SelectListItem item, int year)> setNameOptions = new List<(SelectListItem, int)>();
-        setNameOptions.Add((new SelectListItem("(Any)", "***"), 0));
-
-        while (hasRows)
+        using (MySqlCommand command = new MySqlCommand("SELECT * FROM CARD_SET;", conn))
         {
-            string setCode = results.GetString("SET_CODE");
-            string setName = results.GetString("SET_NAME");
-            int releaseYear = results.GetInt32("RELEASE_YEAR");
+            using var results = command.ExecuteReader();
+            bool hasRows = results.Read();
 
-            setNameOptions.Add((new SelectListItem(setName, setCode), releaseYear));
+            while (hasRows)
+            {
+                CardSet cset = new CardSet();
+                cset.SetCode = results.GetString("SET_CODE");
+                cset.SetName = results.GetString("SET_NAME");
+                cset.ReleaseYear = results.GetInt32("RELEASE_YEAR");
 
-            hasRows = results.Read();
+                CardSets[cset.SetCode] = cset;
+                hasRows = results.Read();
+            }
+
+            results.Close();
         }
-
-        setNameOptions.Sort((left, right) =>
-            left.year.CompareTo(right.year));
-
-        SetNameOptions = setNameOptions.Select(x => x.item).ToArray();
     }
 
     public string? Name { get; set; }
@@ -43,13 +39,27 @@ public class CardSearchViewModel
     [Required]
     public SearchPredicate Predicate { get; set; } = SearchPredicate.And;
 
+    public IEnumerable<Card> Results { get; set; } = Enumerable.Empty<Card>();
+
+    [ValidateNever] public IDictionary<string, CardSet> CardSets { get; } = new Dictionary<string, CardSet>();
+
     public enum SearchPredicate
     {
         And,
         Or
     }
 
-    public IEnumerable<SelectListItem> SetNameOptions { get; }
+    public IEnumerable<SelectListItem> SetNameOptions
+    {
+        get
+        {
+            var values = CardSets.Values.ToList();
+            values.Sort((left, right) => left.ReleaseYear.CompareTo(right.ReleaseYear));
+
+            SelectListItem anyItem = new SelectListItem("(Any)", "***");
+            return values.Select(set => new SelectListItem(set.SetName, set.SetCode)).Prepend(anyItem);
+        }
+    }
 
     public SelectListItem[] SearchPredicateOptions
     {
