@@ -17,6 +17,8 @@ public class CardSearchViewModel
         bool hasRows = results.Read();
 
         List<(SelectListItem item, int year)> setNameOptions = new List<(SelectListItem, int)>();
+        setNameOptions.Add((new SelectListItem("(Any)", "***"), 0));
+
         while (hasRows)
         {
             string setCode = results.GetString("SET_CODE");
@@ -34,8 +36,6 @@ public class CardSearchViewModel
         SetNameOptions = setNameOptions.Select(x => x.item).ToArray();
     }
 
-    [Required(ErrorMessage = "Please enter a card title.")]
-    [Display(Name = "Card Title:")]
     public string? Name { get; set; }
     public string? Content { get; set; }
     public string? SetCode { get; set; }
