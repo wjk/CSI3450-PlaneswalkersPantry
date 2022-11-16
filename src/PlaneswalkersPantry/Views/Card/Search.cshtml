@@ -1,0 +1,49 @@
+@{
+    ViewData["Title"] = "Search Cards";
+}
+
+@model PlaneswalkersPantry.Models.ViewModels.CardSearchViewModel
+
+<main class="row">
+    <h1>Search Cards</h1>
+
+    <form asp-action="Search" asp-controller="Card" method="post" class="search-form">
+        <table>
+            <tbody>
+            <tr>
+                <td colspan="2">
+                    <select asp-for="Predicate" asp-items="Model.SearchPredicateOptions"></select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="Name" class="align-right">Card name:</label>
+                </td>
+                <td>
+                    <input asp-for="Name">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="Content" class="align-right">Text in card body:</label>
+                </td>
+                <td>
+                    <input asp-for="Content">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="SetCode" class="align-right">Card set:</label>
+                </td>
+                <td>
+                    <select asp-for="SetCode" asp-items="Model.SetNameOptions"></select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </p>
+    </form>
+</main>
