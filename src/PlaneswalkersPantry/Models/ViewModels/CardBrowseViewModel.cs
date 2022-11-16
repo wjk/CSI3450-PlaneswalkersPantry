@@ -9,19 +9,6 @@ public class CardBrowseViewModel
 
     public CardBrowseViewModel()
     {
-        string? FixDBNull(MySqlDataReader reader, string columnName)
-        {
-            try
-            {
-                return reader.GetString(columnName);
-            }
-            catch (InvalidCastException)
-            {
-                // This happens if DBNull is found.
-                return null;
-            }
-        }
-
         using MySqlConnection conn = Database.CreateConnection();
 
         using (MySqlCommand command = new MySqlCommand("SELECT * FROM CARD_SET;", conn))
@@ -50,27 +37,7 @@ public class CardBrowseViewModel
 
             while (hasRows)
             {
-                Card card = new Card();
-                card.CardNumber = results.GetInt32("CARD_NUMBER");
-                card.Title = results.GetString("CARD_TITLE");
-                card.ManaCost = results.GetString("MANA_COST");
-                card.RulesText = results.GetString("RULES_TEXT");
-                card.FlavorText = FixDBNull(results, "FLAVOR_TEXT");
-                card.SetCode = results.GetString("SET_CODE");
-                card.Rarity = results.GetString("RARITY_CODE") switch
-                {
-                    "C" => CardRarity.Common,
-                    "U" => CardRarity.Uncommon,
-                    "R" => CardRarity.Rare,
-                    "M" => CardRarity.MythicRare,
-                    _ => throw new ArgumentException($"Unrecognized RARITY_CODE for card {card.Title}")
-                };
-                card.Power = FixDBNull(results, "POWER");
-                card.Toughness = FixDBNull(results, "TOUGHNESS");
-                card.TypeLine = results.GetString("TYPE_LINE");
-                card.NumberOwned = results.GetUInt32("NUMBER_OWNED");
-
-                Cards.Add(card);
+                Cards.Add(Card.FromSqlRow(results));
                 hasRows = results.Read();
             }
 
