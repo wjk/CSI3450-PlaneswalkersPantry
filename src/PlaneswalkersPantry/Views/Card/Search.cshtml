@@ -13,31 +13,31 @@
               <tbody>
                 <tr>
                     <td colspan="2">
-                        <select asp-for="Predicate" asp-items="Model.SearchPredicateOptions"></select>
+                        <select asp-for="Predicate" asp-items="Model.SearchPredicateOptions" class="form-select-lg"></select>
                     </td>
                 </tr>
               <tr>
                   <td>
-                      <label asp-for="Name" class="align-right">Card name:</label>
+                      <label asp-for="Name" class="align-right control-label">Card name:</label>
                   </td>
                   <td>
-                      <input asp-for="Name">
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      <label asp-for="Content" class="align-right">Text in card body:</label>
-                  </td>
-                  <td>
-                      <input asp-for="Content">
+                      <input asp-for="Name" class="form-control">
                   </td>
               </tr>
               <tr>
                   <td>
-                      <label asp-for="SetCode" class="align-right">Card set:</label>
+                      <label asp-for="Content" class="align-right control-label">Text in card body:</label>
                   </td>
                   <td>
-                      <select asp-for="SetCode" asp-items="Model.SetNameOptions"></select>
+                      <input asp-for="Content" class="form-control">
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label asp-for="SetCode" class="align-right control-label">Card set:</label>
+                  </td>
+                  <td>
+                      <select asp-for="SetCode" asp-items="Model.SetNameOptions" class="form-select-lg"></select>
                   </td>
               </tr>
             </tbody>
