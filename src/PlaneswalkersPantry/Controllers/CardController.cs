@@ -11,12 +11,6 @@ namespace PlaneswalkersPantry.Controllers;
 
 public class CardController : Controller
 {
-    public IActionResult Index()
-    {
-        CardBrowseViewModel model = new CardBrowseViewModel();
-        return View(model);
-    }
-
     public IActionResult Search()
     {
         return View(new CardSearchViewModel());
