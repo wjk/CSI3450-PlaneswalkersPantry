@@ -6,6 +6,36 @@ namespace PlaneswalkersPantry.Models;
 
 public class Card
 {
+    public static Card? Find(int cardNumber)
+    {
+        MySqlConnection conn = Database.CreateConnection();
+        using (MySqlCommand command = new MySqlCommand("SELECT * FROM CARD WHERE (CARD_NUMBER = @num)", conn))
+        {
+            command.Parameters.Add(new MySqlParameter("num", cardNumber));
+            using var results = command.ExecuteReader();
+            results.Read();
+
+            if (!results.HasRows)
+            {
+                results.Close();
+                conn.Close();
+                return null;
+            }
+
+            Card card = Card.FromSqlRow(results);
+
+            results.NextResult();
+            bool hasMoreRows = results.Read();
+            results.Close();
+            conn.Close();
+
+            if (hasMoreRows)
+                throw new InvalidOperationException($"More than one card with CARD_NUMBER {cardNumber}");
+
+            return card;
+        }
+    }
+
     public static Card FromSqlRow(MySqlDataReader results)
     {
         static string? FixDbNull(MySqlDataReader reader, string columnName)

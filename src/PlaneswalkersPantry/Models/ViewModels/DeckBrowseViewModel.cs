@@ -4,36 +4,6 @@ namespace PlaneswalkersPantry.Models.ViewModels;
 
 public class DeckBrowseViewModel
 {
-    private static Card? FindCard(int cardNumber)
-    {
-        using MySqlConnection conn = Database.CreateConnection();
-        using (MySqlCommand command = new MySqlCommand("SELECT * FROM CARD WHERE (CARD_NUMBER = @num)", conn))
-        {
-            command.Parameters.Add(new MySqlParameter("num", cardNumber));
-            using var results = command.ExecuteReader();
-            results.Read();
-
-            if (!results.HasRows)
-            {
-                results.Close();
-                conn.Close();
-                return null;
-            }
-
-            Card card = Card.FromSqlRow(results);
-
-            results.NextResult();
-            bool hasMoreRows = results.Read();
-            results.Close();
-            conn.Close();
-
-            if (hasMoreRows)
-                throw new InvalidOperationException($"More than one card with CARD_NUMBER {cardNumber}");
-
-            return card;
-        }
-    }
-
     private static IEnumerable<(Card Card, int numberInDeck)> FindCardsInDeck(Deck deck)
     {
         List<(int cardId, int numberInDeck)> references = new List<(int cardId, int numberInDeck)>();
@@ -60,13 +30,17 @@ public class DeckBrowseViewModel
         }
 
         conn.Close();
-        return references.Select(((int cardId, int count) pair) =>
-        {
-            Card? card = FindCard(pair.cardId);
-            if (card == null) throw new InvalidOperationException($"No card with ID {pair.cardId} found");
 
-            return (card, pair.count);
-        });
+        List<(Card, int count)> retval = new List<(Card, int count)>();
+        foreach ((int cardId, int count) in references)
+        {
+            Card? card = Card.Find(cardId);
+            if (card == null) throw new InvalidOperationException($"No card with ID {cardId} found");
+
+            retval.Add((card, count));
+        }
+
+        return retval;
     }
 
     public DeckBrowseViewModel()
@@ -82,7 +56,6 @@ public class DeckBrowseViewModel
             while (hasRows)
             {
                 Deck deck = Deck.FromSqlRow(results);
-                deck.Cards = FindCardsInDeck(deck);
                 decks.Add(deck);
 
                 hasRows = results.Read();
@@ -90,6 +63,11 @@ public class DeckBrowseViewModel
 
             results.Close();
             Decks = decks;
+        }
+
+        foreach (Deck deck in Decks)
+        {
+            deck.Cards = FindCardsInDeck(deck);
         }
 
         conn.Close();
