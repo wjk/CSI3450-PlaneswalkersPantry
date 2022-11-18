@@ -39,7 +39,7 @@ public class CardSearchViewModel
     [Required]
     public SearchPredicate Predicate { get; set; } = SearchPredicate.And;
 
-    public IEnumerable<Card> Results { get; set; } = Enumerable.Empty<Card>();
+    public IEnumerable<Card>? Results { get; set; }
 
     [ValidateNever] public IDictionary<string, CardSet> CardSets { get; } = new Dictionary<string, CardSet>();
 

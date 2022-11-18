@@ -78,7 +78,7 @@ public class CardController : Controller
                 hasRows = results.Read();
             }
 
-            model.Results = cards;
+            model.Results = cards.Any() ? cards : Enumerable.Empty<Card>();
         }
 
         return View(model);

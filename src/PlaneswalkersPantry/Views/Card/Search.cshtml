@@ -8,7 +8,7 @@
 <main class="row">
     <h1>Search Cards</h1>
 
-    <form asp-action="Search" asp-controller="Card" method="post" class="form-block">
+    <form asp-action="Search" asp-controller="Card" method="post" class="form-block" style="margin-bottom: 50px">
         <div class="form-block-content">
             <p>
                 <select asp-for="Predicate" asp-items="Model.SearchPredicateOptions" class="form-select-lg"></select>
@@ -33,9 +33,9 @@
         </div>
     </form>
 
-    @if (Model.Results.Any())
+    @if (Model.Results != null && Model.Results.Any())
     {
-        <div style="margin-top: 50px">
+        <div>
         @foreach (Card card in Model.Results)
         {
             <div class="row card-details">
@@ -72,5 +72,9 @@
             </div>
         }
         </div>
+    }
+    else if (Model.Results != null && !Model.Results.Any())
+    {
+        <h4>No results found.</h4>
     }
 </main>
