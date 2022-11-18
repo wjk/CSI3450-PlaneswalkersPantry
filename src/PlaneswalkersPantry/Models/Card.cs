@@ -44,21 +44,17 @@ public class Card
         return card;
     }
 
-    [Required]
-    public int CardNumber { get; set; }
-    [Required]
-    public string? Title { get; set; }
+    [Required] public int CardNumber { get; set; }
+    [Required] public string? Title { get; set; }
     public string? ManaCost { get; set; }
     public string? RulesText { get; set; }
     public string? FlavorText { get; set; }
-    [Required]
-    public string? SetCode { get; set; }
+    [Required] public string? SetCode { get; set; }
     public CardRarity Rarity { get; set; } = CardRarity.Common;
     public string? Power { get; set; }
     public string? Toughness { get; set; }
     public string? TypeLine { get; set; }
-    [Required]
-    public uint NumberOwned { get; set; }
+    [Required] public uint NumberOwned { get; set; }
 }
 
 public enum CardRarity

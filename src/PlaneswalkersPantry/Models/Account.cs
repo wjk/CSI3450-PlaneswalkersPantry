@@ -36,7 +36,7 @@ public sealed class Account
     {
         using MySqlConnection conn = Database.CreateConnection();
         using MySqlCommand command = new MySqlCommand("INSERT INTO USER (USER_NAME, HASHED_PASSWORD, USER_TYPE)" +
-                                                "VALUES (@name, @pwd, @type)", conn);
+                                                      "VALUES (@name, @pwd, @type)", conn);
         command.Parameters.Add(new MySqlParameter("name", UserName));
         command.Parameters.Add(new MySqlParameter("pwd", HashedPassword));
         command.Parameters.Add(new MySqlParameter("type", UserType));

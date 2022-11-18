@@ -36,8 +36,7 @@ public class CardSearchViewModel
     public string? Content { get; set; }
     public string? SetCode { get; set; } = "***";
 
-    [Required]
-    public SearchPredicate Predicate { get; set; } = SearchPredicate.And;
+    [Required] public SearchPredicate Predicate { get; set; } = SearchPredicate.And;
 
     public IEnumerable<Card>? Results { get; set; }
 

@@ -15,8 +15,7 @@ public sealed class NewUserModel
     [Required, Display(Name = "Confirm Password")]
     public string Password2 { get; set; } = null!;
 
-    [ValidateNever]
-    public FormState State { get; set; } = FormState.Initial;
+    [ValidateNever] public FormState State { get; set; } = FormState.Initial;
 
     public enum FormState
     {

@@ -36,41 +36,41 @@
     @if (Model.Results != null && Model.Results.Any())
     {
         <div>
-        @foreach (Card card in Model.Results)
-        {
-            <div class="row card-details">
-                <h4>@card.Title (<i>@Model.CardSets[card.SetCode!].SetName</i>)</h4>
-                <p>
-                    @card.Rarity.ToDisplayString() &ndash; @card.NumberOwned.ToString("D") Owned
-                </p>
-                <p>
-                    <b>@card.TypeLine</b>
-                    @if (!string.IsNullOrEmpty(card.ManaCost))
+            @foreach (Card card in Model.Results)
+            {
+                <div class="row card-details">
+                    <h4>@card.Title (<i>@Model.CardSets[card.SetCode!].SetName</i>)</h4>
+                    <p>
+                        @card.Rarity.ToDisplayString() &ndash; @card.NumberOwned.ToString("D") Owned
+                    </p>
+                    <p>
+                        <b>@card.TypeLine</b>
+                        @if (!string.IsNullOrEmpty(card.ManaCost))
+                        {
+                            <span>
+                                &mdash; @card.ManaCost
+                            </span>
+                        }
+                    </p>
+                    <p>
+                        @card.RulesText
+                    </p>
+
+                    @if (!string.IsNullOrWhiteSpace(card.FlavorText))
                     {
-                        <span>
-                            &mdash; @card.ManaCost
-                        </span>
+                        <p>
+                            <i>@card.FlavorText</i>
+                        </p>
                     }
-                </p>
-                <p>
-                    @card.RulesText
-                </p>
 
-                @if (!string.IsNullOrWhiteSpace(card.FlavorText))
-                {
-                    <p>
-                        <i>@card.FlavorText</i>
-                    </p>
-                }
-
-                @if (!string.IsNullOrWhiteSpace(card.Power) && !string.IsNullOrEmpty(card.Toughness))
-                {
-                    <p>
-                        @card.Power&nbsp;/&nbsp;@card.Toughness
-                    </p>
-                }
-            </div>
-        }
+                    @if (!string.IsNullOrWhiteSpace(card.Power) && !string.IsNullOrEmpty(card.Toughness))
+                    {
+                        <p>
+                            @card.Power&nbsp;/&nbsp;@card.Toughness
+                        </p>
+                    }
+                </div>
+            }
         </div>
     }
     else if (Model.Results != null && !Model.Results.Any())

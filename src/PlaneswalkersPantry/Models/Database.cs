@@ -9,7 +9,7 @@ public static class Database
         var conn = new MySqlConnection(
             "Server=localhost;" +
             "Database=PlaneswalkersPantry;" +
-            "User=PlaneswalkersPantry;"+
+            "User=PlaneswalkersPantry;" +
             "Password=PlaneswalkersPantry123");
 
         conn.Open();
