@@ -7,6 +7,10 @@ a.navbar-brand {
     word-break: break-all;
 }
 
+nav.main-nav {
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 30, 90, 0.7));
+}
+
 a {
     color: #0077cc;
 }
