@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Browse Decks";
+}
+
+@using System.Linq
+@model PlaneswalkersPantry.Models.ViewModels.DeckBrowseViewModel
+
+<main class="row">
+    <h1>Browse Decks</h1>
+
+    @foreach (Deck deck in Model.Decks)
+    {
+        <div class="row card-details">
+            <h4>@deck.DeckTitle</h4>
+            <p class="small">
+                @deck.DisplayColors
+            </p>
+
+            <p>
+                @foreach ((Card card, int count) in deck.Cards)
+                {
+                    <span>
+                        @card.Title &times;@count
+                        <br/>
+                    </span>
+                }
+            </p>
+        </div>
+    }
+</main>
