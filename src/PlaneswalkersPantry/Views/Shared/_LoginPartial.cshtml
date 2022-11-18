@@ -7,7 +7,7 @@
             Hello <b>@Session.Session.GetString("AuthenticatedUser")</b>
         </li>
         <li class="nav-item">
-            <a type="submit" class="nav-link btn btn-link">Log Out</a>
+            <a class="nav-link btn btn-link" asp-controller="Account" asp-action="LogOut">Log Out</a>
         </li>
     }
     else
