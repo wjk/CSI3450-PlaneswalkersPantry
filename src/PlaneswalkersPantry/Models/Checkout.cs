@@ -50,7 +50,7 @@ public class Checkout
         if (basket == null && createIfNeeded)
         {
             using (MySqlCommand command =
-                   new MySqlCommand("INSERT INTO CHECKOUT (CHECKOUT_NUMBER, DUE_DATE, USER_NAME, STATUS) VALUES (@checkout_number, @due_date, @user_name, 0)"))
+                   new MySqlCommand("INSERT INTO CHECKOUT (CHECKOUT_NUMBER, DUE_DATE, USER_NAME, STATUS) VALUES (@checkout_number, @due_date, @user_name, 0)", conn))
             {
                 command.Parameters.Add(new MySqlParameter("checkout_number", GetRandomCheckoutNumber()));
                 command.Parameters.Add(new MySqlParameter("due_date", DateTime.Now));
