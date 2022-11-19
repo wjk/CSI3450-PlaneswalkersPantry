@@ -67,6 +67,7 @@ public class Checkout
         if (basket == null)
             throw new InvalidOperationException($"Could not create basket CHECKOUT for user {userName}");
 
+        basket.Status = CheckoutStatus.Basket;
         return basket;
     }
 
@@ -88,7 +89,7 @@ public class Checkout
     public int CheckoutId { get; set; }
     public DateTime? DueDate { get; set; }
     public string? UserName { get; set; }
-    public CheckoutStatus Status { get; set; }
+    public CheckoutStatus Status { get; set; } = CheckoutStatus.Current;
 
     public IEnumerable<(Card, uint count)> CardsInCheckout => _cardsInCheckoutLoader.Value;
 
