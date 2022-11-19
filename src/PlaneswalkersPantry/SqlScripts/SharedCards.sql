@@ -36,11 +36,6 @@ INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, C
 VALUES (1, 'Black Lotus', '0', 'Tap, Sacrifice Black Lotus: Add three mana of any one color to your mana pool.',
         NULL, NULL, 'LEA', 'R', NULL, NULL, 'Artifact', 4);
 
-INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
-VALUES (2, 'Island', '', 'Tap: Add {B}.', NULL, NULL, 'M15', 'C', NULL, NULL, 'Basic Land', 50);
-INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
-VALUES (3, 'Forest', '', 'Tap: Add {G}.', NULL, NULL, 'M15', 'C', NULL, NULL, 'Basic Land', 50);
-INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
 VALUES (4, 'Accursed Spirit', '3B', 'Intimidate', NULL, NULL, 'M15', 'C', 3, 2, 'Creature - Spirit', 5);
 INSERT INTO CARD (CARD_NUMBER, CARD_TITLE, MANA_COST, RULES_TEXT, FLAVOR_TEXT, CARD_IMAGE, SET_CODE, RARITY_CODE, POWER, TOUGHNESS, TYPE_LINE, NUMBER_OWNED)
 VALUES (5, 'Act on Impulse', '2R', 'Exile the top three cards of your library. Until end of turn, you may play cards exiled this way. (If you cast a spell this way, you still pay its costs. You can play a land this way only if you have an available land play remaining.)', NULL, NULL, 'M15', 'U', NULL, NULL, 'Sorcery', 13);
