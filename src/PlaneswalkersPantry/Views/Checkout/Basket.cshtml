@@ -5,14 +5,17 @@
 @model PlaneswalkersPantry.Models.Checkout
 
 <main class="row">
-    <h1>Your Basket</h1>
+    @if (Model.CardsInCheckout.Any())
+    {
+        <h1>Your Basket</h1>
+    }
+    else
+    {
+        <h1>Your Basket is empty.</h1>
+    }
 
-    <p>
-        @foreach ((Card card, uint count) in Model.CardsInCheckout)
-        {
-            <span>
-                @card.Title &times;@count
-            </span>
-        }
-    </p>
+    @foreach ((Card card, uint count) in Model.CardsInCheckout)
+    {
+        <p>@card.Title &times;@count</p>
+    }
 </main>
