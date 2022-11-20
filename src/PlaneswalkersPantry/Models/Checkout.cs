@@ -20,6 +20,33 @@ public class Checkout
         return Convert.ToInt32(data);
     }
 
+    public static IEnumerable<Checkout> GetCurrentCheckouts(string userName)
+    {
+        using MySqlConnection conn = Database.CreateConnection();
+
+        List<Checkout> retval = new List<Checkout>();
+        using (MySqlCommand command = new MySqlCommand("SELECT * FROM CHECKOUT WHERE (USER_NAME = @name AND STATUS = 1)", conn))
+        {
+            command.Parameters.Add(new MySqlParameter("name", userName));
+            MySqlDataReader results = command.ExecuteReader();
+
+            bool hasRows = results.Read();
+            while (hasRows)
+            {
+                Checkout checkout = FromSqlRow(results);
+                checkout.Status = CheckoutStatus.Current;
+                retval.Add(checkout);
+
+                hasRows = results.Read();
+            }
+
+            results.Close();
+        }
+
+        conn.Close();
+        return retval;
+    }
+
     public static Checkout? GetBasket(string userName, bool createIfNeeded = true)
     {
         using MySqlConnection conn = Database.CreateConnection();
