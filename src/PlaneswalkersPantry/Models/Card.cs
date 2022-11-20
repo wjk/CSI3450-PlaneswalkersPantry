@@ -74,6 +74,28 @@ public class Card
         return card;
     }
 
+    public int GetNumberCheckedOut()
+    {
+        int count;
+
+        using MySqlConnection conn = Database.CreateConnection();
+        using (MySqlCommand command =
+               new MySqlCommand("SELECT SUM(COUNT) AS COUNT FROM CARD_IN_CHECKOUT WHERE (CARD_NUMBER = @num)", conn))
+        {
+            command.Parameters.Add(new MySqlParameter("num", CardNumber));
+            MySqlDataReader results = command.ExecuteReader();
+
+            results.Read();
+            count = results.GetInt32("COUNT");
+            results.Close();
+        }
+
+        conn.Close();
+        return count;
+    }
+
+    public int GetNumberAvailable() => (int)NumberOwned - GetNumberCheckedOut();
+
     [Required] public int CardNumber { get; set; }
     [Required] public string? Title { get; set; }
     public string? ManaCost { get; set; }
