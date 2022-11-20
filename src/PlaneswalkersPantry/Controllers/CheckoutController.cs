@@ -19,14 +19,7 @@ public class CheckoutController : Controller
     public IActionResult Basket()
     {
         string? userName = Session.AuthenticatedUserName;
-        if (userName == null)
-        {
-            Session.Context.Response.StatusCode = 401;
-
-            RequestErrorViewModel errorViewModel = new RequestErrorViewModel();
-            errorViewModel.Message = "You need to be signed in to do that.";
-            return View("Error", errorViewModel);
-        }
+        if (userName == null) throw new UnauthorizedAccessException("You need to be logged in to do this");
 
         Checkout? basket = Checkout.GetBasket(userName, true);
         return View(basket);
