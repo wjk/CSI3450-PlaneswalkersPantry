@@ -26,12 +26,20 @@ public class CardController : Controller
         Card? card = Card.Find(cardNumber);
         if (card == null) throw new ArgumentException($"Card not found for ID {cardNumber}");
 
-        AddCardToBasketViewModel viewModel = new AddCardToBasketViewModel();
-        viewModel.Card = card;
-        viewModel.CardSet = CardSet.Find(card.SetCode!);
-        viewModel.Count = 1;
+        if (card.GetNumberAvailable() > 0)
+        {
+            AddCardToBasketViewModel viewModel = new AddCardToBasketViewModel();
+            viewModel.Card = card;
+            viewModel.CardSet = CardSet.Find(card.SetCode!);
+            viewModel.Count = 1;
 
-        return View(viewModel);
+            return View(viewModel);
+        }
+        else
+        {
+            // TODO: Display a better error.
+            return RedirectToAction("Search");
+        }
     }
 
     [HttpPost]

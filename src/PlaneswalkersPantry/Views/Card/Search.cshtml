@@ -42,7 +42,8 @@
                 <div class="row card-details">
                     <h4>@card.Title (<i>@Model.CardSets[card.SetCode!].SetName</i>)</h4>
                     <p>
-                        @card.Rarity.ToDisplayString() &ndash; @card.NumberOwned.ToString("D") Owned
+                        @card.Rarity.ToDisplayString() &ndash; @card.NumberOwned.ToString("D") Owned,
+                        @card.GetNumberAvailable() Available
                     </p>
                     <p>
                         <b>@card.TypeLine</b>
@@ -74,9 +75,16 @@
                     @if (Session.IsSignedIn())
                     {
                         <p>
-                            <a asp-controller="Card" asp-action="AddToBasket" asp-route-cardNumber=@card.CardNumber>
-                                Add to Basket
-                            </a>
+                            @if (card.GetNumberAvailable() > 0)
+                            {
+                                <a asp-controller="Card" asp-action="AddToBasket" asp-route-cardNumber=@card.CardNumber>
+                                    Add to Basket
+                                </a>
+                            }
+                            else
+                            {
+                                <b>No cards available</b>
+                            }
                         </p>
                     }
                 </div>
