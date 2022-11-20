@@ -28,7 +28,7 @@ public class CheckoutController : Controller
             return View("Error", errorViewModel);
         }
 
-        Checkout? basket = Checkout.GetBasket(userName, false);
+        Checkout? basket = Checkout.GetBasket(userName, true);
         return View(basket);
     }
 }

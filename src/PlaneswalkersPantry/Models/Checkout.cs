@@ -17,7 +17,7 @@ public class Checkout
         byte[] data = new byte[4];
         random.NextBytes(data);
 
-        return Convert.ToInt32(data);
+        return BitConverter.ToInt32(data);
     }
 
     public static IEnumerable<Checkout> GetCurrentCheckouts(string userName)
@@ -91,10 +91,11 @@ public class Checkout
 
         conn.Close();
 
-        if (basket == null)
-            throw new InvalidOperationException($"Could not create basket CHECKOUT for user {userName}");
+        if (basket != null)
+        {
+            basket.Status = CheckoutStatus.Basket;
+        }
 
-        basket.Status = CheckoutStatus.Basket;
         return basket;
     }
 
@@ -130,7 +131,7 @@ public class Checkout
         using (MySqlCommand command =
                new MySqlCommand("SELECT * FROM CARD_IN_CHECKOUT WHERE (CHECKOUT_NUMBER = @num)", conn))
         {
-            command.Parameters.Add(new MySqlParameter("CHECKOUT_NUMBER", CheckoutId));
+            command.Parameters.Add(new MySqlParameter("num", CheckoutId));
             var results = command.ExecuteReader();
 
             bool hasRows = results.Read();
