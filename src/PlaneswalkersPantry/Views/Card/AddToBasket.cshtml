@@ -1,0 +1,52 @@
+@{
+    ViewData["Title"] = "Add Card to Basket";
+}
+
+@model PlaneswalkersPantry.Models.ViewModels.AddCardToBasketViewModel
+
+<main class="row">
+    <h1>Add Card to Basket</h1>
+    <div class="row card-details">
+        <h4>@Model.Card.Title (<i>@Model.CardSet!.SetName</i>)</h4>
+        <p>
+            @Model.Card.Rarity.ToDisplayString() &ndash; @Model.Card.NumberOwned.ToString("D") Owned
+        </p>
+        <p>
+            <b>@Model.Card.TypeLine</b>
+            @if (!string.IsNullOrEmpty(Model.Card.ManaCost))
+            {
+                <span>
+                    &mdash; @Model.Card.ManaCost
+                </span>
+            }
+        </p>
+        <p>
+            @Model.Card.RulesText
+        </p>
+
+        @if (!string.IsNullOrWhiteSpace(Model.Card.FlavorText))
+        {
+            <p>
+                <i>@Model.Card.FlavorText</i>
+            </p>
+        }
+
+        @if (!string.IsNullOrWhiteSpace(Model.Card.Power) && !string.IsNullOrEmpty(Model.Card.Toughness))
+        {
+            <p>
+                @Model.Card.Power&nbsp;/&nbsp;@Model.Card.Toughness
+            </p>
+        }
+    </div>
+
+    <h3>How many cards do you wish to borrow?</h3>
+    <form asp-controller="Card" asp-action="AddToBasket">
+        <p>
+            <input type="number" asp-for="Count" id="CountParameter">
+        </p>
+        <p>
+            <input type="hidden" name="CardNumber" value=@Model.CardNumber>
+            <input type="submit" value="Add to Basket" class="btn">
+        </p>
+    </form>
+</main>

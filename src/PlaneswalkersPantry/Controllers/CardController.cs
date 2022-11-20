@@ -18,7 +18,7 @@ public class CardController : Controller
         Session = session;
     }
 
-    public IActionResult AddToBasket(CardSearchViewModel searchViewModel, int cardNumber)
+    public IActionResult AddToBasket(int cardNumber)
     {
         string? userName = Session.AuthenticatedUserName;
         if (userName == null) throw new UnauthorizedAccessException("You need to be logged in to do this");
@@ -26,11 +26,25 @@ public class CardController : Controller
         Card? card = Card.Find(cardNumber);
         if (card == null) throw new ArgumentException($"Card not found for ID {cardNumber}");
 
+        AddCardToBasketViewModel viewModel = new AddCardToBasketViewModel();
+        viewModel.Card = card;
+        viewModel.CardSet = CardSet.Find(card.SetCode!);
+        viewModel.Count = 1;
+
+        return View(viewModel);
+    }
+
+    [HttpPost]
+    public IActionResult AddToBasket(AddCardToBasketViewModel model)
+    {
+        string? userName = Session.AuthenticatedUserName;
+        if (userName == null) throw new UnauthorizedAccessException("You need to be logged in to do this");
+
         Checkout? basket = Checkout.GetBasket(userName, true);
         if (basket == null) throw new InvalidOperationException("Basket was not created");
-        basket.AddCard(card, 1);
+        basket.AddCard(model.Card, (uint)model.Count);
 
-        return RedirectToAction("Search", searchViewModel);
+        return LocalRedirect("/Checkout/Basket");
     }
 
     public IActionResult Search()
