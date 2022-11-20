@@ -4,6 +4,7 @@
 
 @using System.Linq
 @model PlaneswalkersPantry.Models.ViewModels.CardSearchViewModel
+@inject SessionAccess Session
 
 <main class="row">
     <h1>Search Cards</h1>
@@ -70,11 +71,14 @@
                         </p>
                     }
 
-                    <p>
-                        <a asp-controller="Card" asp-action="AddToBasket" asp-route-card=@card>
-                            Add to Basket
-                        </a>
-                    </p>
+                    @if (Session.IsSignedIn())
+                    {
+                        <p>
+                            <a asp-controller="Card" asp-action="AddToBasket" asp-route-cardNumber=@card.CardNumber>
+                                Add to Basket
+                            </a>
+                        </p>
+                    }
                 </div>
             }
         </div>
