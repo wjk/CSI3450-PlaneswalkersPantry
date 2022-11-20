@@ -163,7 +163,7 @@ public class Checkout
         using MySqlConnection conn = Database.CreateConnection();
 
         int existingCount;
-        using (MySqlCommand command = new MySqlCommand("SELECT * FROM CARD_IN_CHECKOUT WHERE (CHECKOUT_NUMBER = @checkout AND CARD_ID = @card)", conn))
+        using (MySqlCommand command = new MySqlCommand("SELECT * FROM CARD_IN_CHECKOUT WHERE (CHECKOUT_NUMBER = @checkout AND CARD_NUMBER = @card)", conn))
         {
             command.Parameters.Add(new MySqlParameter("checkout", CheckoutId));
             command.Parameters.Add(new MySqlParameter("card", card.CardNumber));
