@@ -86,7 +86,17 @@ public class Card
             MySqlDataReader results = command.ExecuteReader();
 
             results.Read();
-            count = results.GetInt32("COUNT");
+
+            try
+            {
+                count = results.GetInt32("COUNT");
+            }
+            catch (InvalidCastException)
+            {
+                // This happens if DBNull is found.
+                count = 0;
+            }
+
             results.Close();
         }
 
