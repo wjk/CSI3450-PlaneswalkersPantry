@@ -1,0 +1,10 @@
+@inject SessionAccess SessionAccess
+
+<ul class="navbar-nav flex-grow-1">
+    @if (SessionAccess.IsSignedIn())
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Checkout" asp-action="Basket">View Basket</a>
+        </li>
+    }
+</ul>

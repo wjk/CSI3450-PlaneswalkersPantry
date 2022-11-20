@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "title";
+}
+
+@model PlaneswalkersPantry.Models.Checkout
+
+<main class="row">
+    <h1>Your Basket</h1>
+
+    <p>
+        @foreach ((Card card, uint count) in Model.CardsInCheckout)
+        {
+            <span>
+                @card.Title &times;@count
+            </span>
+        }
+    </p>
+</main>

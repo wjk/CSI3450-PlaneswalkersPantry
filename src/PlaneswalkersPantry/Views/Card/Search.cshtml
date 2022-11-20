@@ -69,6 +69,12 @@
                             @card.Power&nbsp;/&nbsp;@card.Toughness
                         </p>
                     }
+
+                    <p>
+                        <a asp-controller="Card" asp-action="AddToBasket" asp-route-card=@card>
+                            Add to Basket
+                        </a>
+                    </p>
                 </div>
             }
         </div>

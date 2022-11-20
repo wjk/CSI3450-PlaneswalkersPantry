@@ -15,4 +15,22 @@ public sealed class SessionAccess
     {
         return Session.GetString("AuthenticatedUser") != null;
     }
+
+    public string? AuthenticatedUserName => Session.GetString("AuthenticatedUser");
+
+    public bool HasUserBasket()
+    {
+        string? userName = Session.GetString("AuthenticatedUser");
+        if (userName == null) return false;
+
+        return Checkout.GetBasket(userName, false) != null;
+    }
+
+    public bool HasCheckouts()
+    {
+        string? userName = Session.GetString("AuthenticatedUser");
+        if (userName == null) return false;
+
+        return Checkout.GetCurrentCheckouts(userName).Any();
+    }
 }

@@ -11,9 +11,36 @@ namespace PlaneswalkersPantry.Controllers;
 
 public class CardController : Controller
 {
+    private SessionAccess Session;
+
+    public CardController(SessionAccess session)
+    {
+        Session = session;
+    }
+
     public IActionResult Search()
     {
         return View(new CardSearchViewModel());
+    }
+
+    [HttpPost]
+    public IActionResult AddToBasket(CardSearchViewModel searchViewModel, Card card)
+    {
+        string? userName = Session.AuthenticatedUserName;
+        if (userName == null)
+        {
+            Session.Context.Response.StatusCode = 401;
+
+            RequestErrorViewModel errorViewModel = new RequestErrorViewModel();
+            errorViewModel.Message = "You need to be signed in to do that.";
+            return View("Error", errorViewModel);
+        }
+
+        Checkout? basket = Checkout.GetBasket(userName, true);
+        if (basket == null) throw new InvalidOperationException("Basket was not created");
+        basket.AddCard(card, 1);
+
+        return RedirectToAction("Search", searchViewModel);
     }
 
     [HttpPost]

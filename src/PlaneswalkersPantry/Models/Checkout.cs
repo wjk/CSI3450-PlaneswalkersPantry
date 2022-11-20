@@ -156,4 +156,68 @@ public class Checkout
 
         return retval;
     }
+
+    public void AddCard(Card card, uint count)
+    {
+        using MySqlConnection conn = Database.CreateConnection();
+
+        int existingCount;
+        using (MySqlCommand command = new MySqlCommand("SELECT * FROM CARD_IN_CHECKOUT WHERE (CHECKOUT_NUMBER = @checkout AND CARD_ID = @card)", conn))
+        {
+            command.Parameters.Add(new MySqlParameter("checkout", CheckoutId));
+            command.Parameters.Add(new MySqlParameter("card", card.CardNumber));
+
+            MySqlDataReader results = command.ExecuteReader();
+            bool hasRows = results.Read();
+
+            if (hasRows)
+            {
+                existingCount = (int)results.GetUInt32("COUNT");
+            }
+            else
+            {
+                existingCount = -1;
+            }
+
+            results.Close();
+        }
+
+        bool done = false;
+        if (existingCount != -1)
+        {
+            using (MySqlCommand command =
+                   new MySqlCommand(
+                       "UPDATE CARD_IN_CHECKOUT SET COUNT = @value WHERE (CHECKOUT_NUMBER = @checkout AND CARD_NUMBER = @card)",
+                       conn))
+            {
+                uint newCount = (uint)existingCount + count;
+                command.Parameters.Add(new MySqlParameter("value", newCount));
+                command.Parameters.Add(new MySqlParameter("checkout", CheckoutId));
+                command.Parameters.Add(new MySqlParameter("card", card.CardNumber));
+
+                int rowsAffected = command.ExecuteNonQuery();
+                if (rowsAffected != 0) done = true;
+            }
+        }
+
+        if (done)
+        {
+            conn.Close();
+            return;
+        }
+
+        using (MySqlCommand command =
+               new MySqlCommand(
+                   "INSERT INTO CARD_IN_CHECKOUT (CHECKOUT_NUMBER, CARD_NUMBER, COUNT) VALUES (@checkout, @card, @count)",
+                   conn))
+        {
+            command.Parameters.Add(new MySqlParameter("checkout", CheckoutId));
+            command.Parameters.Add(new MySqlParameter("card", card.CardNumber));
+            command.Parameters.Add(new MySqlParameter("count", count));
+
+            command.ExecuteNonQuery();
+        }
+
+        conn.Close();
+    }
 }
