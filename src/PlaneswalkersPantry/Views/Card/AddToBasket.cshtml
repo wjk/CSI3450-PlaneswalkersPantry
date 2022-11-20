@@ -42,7 +42,7 @@
     <h3>How many cards do you wish to borrow?</h3>
     <form asp-controller="Card" asp-action="AddToBasket">
         <p>
-            <input type="number" asp-for="Count" id="CountParameter">
+            <input type="number" asp-for="Count" id="CountParameter" min="1" class="form-control">
         </p>
         <p>
             <input type="hidden" name="CardNumber" value=@Model.CardNumber>
