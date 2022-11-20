@@ -47,7 +47,7 @@ public class Checkout
         return retval;
     }
 
-    public static Checkout? GetBasket(string userName, bool createIfNeeded = true)
+    public static Checkout? GetBasket(string userName, bool createIfNeeded)
     {
         using MySqlConnection conn = Database.CreateConnection();
 
