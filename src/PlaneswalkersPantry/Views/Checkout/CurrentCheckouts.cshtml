@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Checkouts";
+}
+
+@model IEnumerable<PlaneswalkersPantry.Models.Checkout>
+
+<main>
+    @if (Model.Any())
+    {
+        <div class="row">
+            <h1>Your Checkouts</h1>
+        </div>
+
+        @foreach (Checkout checkout in Model)
+        {
+            <div class="card-details">
+                <p>
+                    <b>Due @checkout.DueDate</b>
+                </p>
+
+                <p>
+                    @foreach ((Card card, uint count) in checkout.CardsInCheckout)
+                    {
+                        <span>
+                            @card.Title &times;@count
+                        </span>
+                    }
+                </p>
+            </div>
+        }
+    }
+    else
+    {
+        <h1>You do not have any cards currently checked out.</h1>
+    }
+</main>
+

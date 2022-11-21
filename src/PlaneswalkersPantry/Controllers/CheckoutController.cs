@@ -16,6 +16,15 @@ public class CheckoutController : Controller
         Session = sessionAccess;
     }
 
+    public IActionResult CurrentCheckouts()
+    {
+        string? userName = Session.AuthenticatedUserName;
+        if (userName == null) throw new UnauthorizedAccessException("You need to be logged in to do this");
+
+        var checkouts = Checkout.GetCurrentCheckouts(userName);
+        return View(checkouts);
+    }
+
     public IActionResult Basket()
     {
         string? userName = Session.AuthenticatedUserName;
