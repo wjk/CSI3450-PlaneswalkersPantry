@@ -182,6 +182,27 @@ public class Checkout
         conn.Close();
     }
 
+    public void ReturnCheckout()
+    {
+        if (Status != CheckoutStatus.Current)
+            throw new InvalidOperationException("This function only works on a current checkout");
+
+        Status = CheckoutStatus.Returned;
+
+        using MySqlConnection conn = Database.CreateConnection();
+        using (MySqlCommand command =
+               new MySqlCommand("UPDATE CHECKOUT SET STATUS = @status WHERE (CHECKOUT_NUMBER = @id)",
+                   conn))
+        {
+            command.Parameters.Add(new MySqlParameter("status", (int)Status));
+            command.Parameters.Add(new MySqlParameter("id", CheckoutNumber));
+
+            command.ExecuteNonQuery();
+        }
+
+        conn.Close();
+    }
+
     public void AddCard(Card card, uint count)
     {
         using MySqlConnection conn = Database.CreateConnection();
