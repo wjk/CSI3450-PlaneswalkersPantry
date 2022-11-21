@@ -18,6 +18,20 @@ public class CardController : Controller
         Session = session;
     }
 
+    public IActionResult AddToBasket(int cardNumber)
+    {
+        AddCardToBasketViewModel viewModel = new AddCardToBasketViewModel();
+
+        Card? card = Card.Find(cardNumber);
+        if (card == null) throw new InvalidOperationException($"Card with ID {cardNumber} not found");
+
+        viewModel.Card = card;
+        viewModel.Count = 1;
+        viewModel.CardSet = CardSet.Find(card.SetCode!);
+
+        return View(viewModel);
+    }
+
     [HttpPost]
     public IActionResult AddToBasket(AddCardToBasketViewModel model)
     {
