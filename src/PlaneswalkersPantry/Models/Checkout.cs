@@ -158,6 +158,30 @@ public class Checkout
         return retval;
     }
 
+    public void ConfirmCheckout()
+    {
+        if (Status != CheckoutStatus.Basket)
+            throw new InvalidOperationException("This function only works on a user's basket");
+
+        DateTime dueDate = DateTime.Now.AddDays(14);
+        DueDate = new DateTime(dueDate.Year, dueDate.Month, dueDate.Day, 11, 59, 59);
+        Status = CheckoutStatus.Current;
+
+        using MySqlConnection conn = Database.CreateConnection();
+        using (MySqlCommand command =
+               new MySqlCommand("UPDATE CHECKOUT SET DUE_DATE = @date, STATUS = @status WHERE (CHECKOUT_NUMBER = @id)",
+                   conn))
+        {
+            command.Parameters.Add(new MySqlParameter("date", DueDate.Value));
+            command.Parameters.Add(new MySqlParameter("status", (int)Status));
+            command.Parameters.Add(new MySqlParameter("id", CheckoutNumber));
+
+            command.ExecuteNonQuery();
+        }
+
+        conn.Close();
+    }
+
     public void AddCard(Card card, uint count)
     {
         using MySqlConnection conn = Database.CreateConnection();
