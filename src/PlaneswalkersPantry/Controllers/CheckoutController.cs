@@ -48,4 +48,22 @@ public class CheckoutController : Controller
         basket.RemoveCard(card);
         return RedirectToAction("Basket");
     }
+
+    public IActionResult PerformCheckout()
+    {
+        string? userName = Session.AuthenticatedUserName;
+        if (userName == null) throw new UnauthorizedAccessException("You need to be logged in to do this");
+
+        Checkout? basket = Checkout.GetBasket(userName, true);
+        if (basket == null) throw new InvalidOperationException("Could not create basket");
+
+        if (!basket.CardsInCheckout.Any())
+        {
+            // TODO: Display a better error here.
+            return RedirectToAction("Basket");
+        }
+
+        basket.ConfirmCheckout();
+        return RedirectToAction("CurrentCheckouts");
+    }
 }

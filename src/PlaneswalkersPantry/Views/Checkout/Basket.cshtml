@@ -25,4 +25,13 @@
             </a>
         </p>
     }
+
+    @if (Model.CardsInCheckout.Any())
+    {
+        <p>
+            <a asp-controller="Checkout" asp-action="PerformCheckout" class="btn btn-primary">
+                Check Out
+            </a>
+        </p>
+    }
 </main>
