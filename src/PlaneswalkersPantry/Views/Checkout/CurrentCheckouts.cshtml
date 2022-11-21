@@ -13,7 +13,7 @@
 
         @foreach (Checkout checkout in Model)
         {
-            <div class="card-details">
+            <div class="row card-details">
                 <p>
                     <b>Due @checkout.DueDate</b>
                 </p>
@@ -23,6 +23,7 @@
                     {
                         <span>
                             @card.Title &times;@count
+                            <br/>
                         </span>
                     }
                 </p>
