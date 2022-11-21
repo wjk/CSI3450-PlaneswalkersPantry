@@ -99,6 +99,32 @@ public class Checkout
         return basket;
     }
 
+    public static Checkout? Find(int checkoutNumber)
+    {
+        using MySqlConnection conn = Database.CreateConnection();
+
+        Checkout? retval = null;
+        using (MySqlCommand command = new MySqlCommand("SELECT * FROM CHECKOUT WHERE (CHECKOUT_NUMBER = @num)", conn))
+        {
+            command.Parameters.Add(new MySqlParameter("num", checkoutNumber));
+
+            using MySqlDataReader results = command.ExecuteReader();
+            bool hasRows = results.Read();
+
+            if (hasRows)
+            {
+                retval = FromSqlRow(results);
+
+                hasRows = results.Read();
+                if (hasRows)
+                    throw new InvalidOperationException("More than one checkout was found");
+            }
+        }
+
+        conn.Close();
+        return retval;
+    }
+
     public static Checkout FromSqlRow(MySqlDataReader results)
     {
         Checkout value = new Checkout();
