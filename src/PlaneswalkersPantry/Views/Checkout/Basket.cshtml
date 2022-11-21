@@ -16,6 +16,13 @@
 
     @foreach ((Card card, uint count) in Model.CardsInCheckout)
     {
-        <p>@card.Title &times;@count</p>
+        <p>
+            @card.Title &times;@count
+
+            &bull;
+            <a asp-controller="Checkout" asp-action="RemoveFromBasket" asp-route-cardNumber="@card.CardNumber">
+                Remove
+            </a>
+        </p>
     }
 </main>

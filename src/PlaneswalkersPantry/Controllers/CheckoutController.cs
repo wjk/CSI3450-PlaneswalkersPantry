@@ -24,4 +24,19 @@ public class CheckoutController : Controller
         Checkout? basket = Checkout.GetBasket(userName, true);
         return View(basket);
     }
+
+    public IActionResult RemoveFromBasket(int cardNumber)
+    {
+        string? userName = Session.AuthenticatedUserName;
+        if (userName == null) throw new UnauthorizedAccessException("You need to be logged in to do this");
+
+        Checkout? basket = Checkout.GetBasket(userName, true);
+        if (basket == null) throw new InvalidOperationException("Could not create basket");
+
+        Card? card = Card.Find(cardNumber);
+        if (card == null) throw new InvalidOperationException($"Could not find card with ID {cardNumber}");
+
+        basket.RemoveCard(card);
+        return RedirectToAction("Basket");
+    }
 }

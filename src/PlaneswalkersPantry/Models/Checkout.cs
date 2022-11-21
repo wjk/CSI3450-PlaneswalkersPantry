@@ -221,4 +221,25 @@ public class Checkout
 
         conn.Close();
     }
+
+    public bool RemoveCard(Card card)
+    {
+        // This method returns true if any cards were deleted from the database.
+
+        int rowsAffected;
+
+        using MySqlConnection conn = Database.CreateConnection();
+        using (MySqlCommand command =
+               new MySqlCommand(
+                   "DELETE FROM CARD_IN_CHECKOUT WHERE (CHECKOUT_NUMBER = @checkout AND CARD_NUMBER = @card)", conn))
+        {
+            command.Parameters.Add(new MySqlParameter("checkout", CheckoutNumber));
+            command.Parameters.Add(new MySqlParameter("card", card.CardNumber));
+
+            rowsAffected = command.ExecuteNonQuery();
+        }
+
+        conn.Close();
+        return rowsAffected > 0;
+    }
 }
