@@ -27,6 +27,12 @@
                         </span>
                     }
                 </p>
+
+                <p>
+                    <a asp-controller="Checkout" asp-action="ReturnCheckout" asp-route-checkoutNumber="@checkout.CheckoutNumber">
+                        Return Cards
+                    </a>
+                </p>
             </div>
         }
     }

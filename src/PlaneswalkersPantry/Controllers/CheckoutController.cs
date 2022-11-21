@@ -66,4 +66,16 @@ public class CheckoutController : Controller
         basket.ConfirmCheckout();
         return RedirectToAction("CurrentCheckouts");
     }
+
+    public IActionResult ReturnCheckout(int checkoutNumber)
+    {
+        string? userName = Session.AuthenticatedUserName;
+        if (userName == null) throw new UnauthorizedAccessException("You need to be logged in to do this");
+
+        Checkout? checkout = Checkout.Find(checkoutNumber);
+        if (checkout == null) throw new ArgumentException("No checkout found with that checkout number");
+
+        checkout.ReturnCheckout();
+        return RedirectToAction("CurrentCheckouts");
+    }
 }
