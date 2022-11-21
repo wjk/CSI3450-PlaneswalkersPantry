@@ -18,30 +18,6 @@ public class CardController : Controller
         Session = session;
     }
 
-    public IActionResult AddToBasket(int cardNumber)
-    {
-        string? userName = Session.AuthenticatedUserName;
-        if (userName == null) throw new UnauthorizedAccessException("You need to be logged in to do this");
-
-        Card? card = Card.Find(cardNumber);
-        if (card == null) throw new ArgumentException($"Card not found for ID {cardNumber}");
-
-        if (card.GetNumberAvailable() > 0)
-        {
-            AddCardToBasketViewModel viewModel = new AddCardToBasketViewModel();
-            viewModel.Card = card;
-            viewModel.CardSet = CardSet.Find(card.SetCode!);
-            viewModel.Count = 1;
-
-            return View(viewModel);
-        }
-        else
-        {
-            // TODO: Display a better error.
-            return RedirectToAction("Search");
-        }
-    }
-
     [HttpPost]
     public IActionResult AddToBasket(AddCardToBasketViewModel model)
     {
