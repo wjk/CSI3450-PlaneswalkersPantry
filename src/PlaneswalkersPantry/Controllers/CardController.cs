@@ -26,7 +26,7 @@ public class CardController : Controller
 
         Checkout? basket = Checkout.GetBasket(userName, true);
         if (basket == null) throw new InvalidOperationException("Basket was not created");
-        basket.AddCard(model.Card, (uint)model.Count);
+        basket.AddCard(model.Card!, (uint)model.Count);
 
         return LocalRedirect("/Checkout/Basket");
     }
