@@ -164,7 +164,7 @@ public class Checkout
             throw new InvalidOperationException("This function only works on a user's basket");
 
         DateTime dueDate = DateTime.Now.AddDays(14);
-        DueDate = new DateTime(dueDate.Year, dueDate.Month, dueDate.Day, 11, 59, 59);
+        DueDate = new DateTime(dueDate.Year, dueDate.Month, dueDate.Day, 23, 59, 59);
         Status = CheckoutStatus.Current;
 
         using MySqlConnection conn = Database.CreateConnection();
