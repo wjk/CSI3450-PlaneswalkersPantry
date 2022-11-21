@@ -80,7 +80,9 @@ public class Card
 
         using MySqlConnection conn = Database.CreateConnection();
         using (MySqlCommand command =
-               new MySqlCommand("SELECT SUM(COUNT) AS COUNT FROM CARD_IN_CHECKOUT WHERE (CARD_NUMBER = @num)", conn))
+               new MySqlCommand("SELECT SUM(COUNT) AS COUNT FROM CARD_IN_CHECKOUT " +
+                                "JOIN CHECKOUT ON CHECKOUT.CHECKOUT_NUMBER = CARD_IN_CHECKOUT.CHECKOUT_NUMBER " +
+                                "WHERE (CARD_NUMBER = @num AND CHECKOUT.STATUS = 1)", conn))
         {
             command.Parameters.Add(new MySqlParameter("num", CardNumber));
             MySqlDataReader results = command.ExecuteReader();
