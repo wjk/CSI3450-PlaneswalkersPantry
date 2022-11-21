@@ -102,7 +102,7 @@ public class Checkout
     public static Checkout FromSqlRow(MySqlDataReader results)
     {
         Checkout value = new Checkout();
-        value.CheckoutId = results.GetInt32("CHECKOUT_NUMBER");
+        value.CheckoutNumber = results.GetInt32("CHECKOUT_NUMBER");
         value.DueDate = results.GetDateTime("DUE_DATE");
         value.UserName = results.GetString("USER_NAME");
         value.Status = (CheckoutStatus)results.GetInt32("STATUS");
@@ -114,7 +114,7 @@ public class Checkout
         _cardsInCheckoutLoader = new Lazy<IEnumerable<(Card, uint count)>>(LoadCardsInCheckout);
     }
 
-    public int CheckoutId { get; set; }
+    public int CheckoutNumber { get; set; }
     public DateTime? DueDate { get; set; }
     public string? UserName { get; set; }
     public CheckoutStatus Status { get; set; } = CheckoutStatus.Current;
@@ -131,7 +131,7 @@ public class Checkout
         using (MySqlCommand command =
                new MySqlCommand("SELECT * FROM CARD_IN_CHECKOUT WHERE (CHECKOUT_NUMBER = @num)", conn))
         {
-            command.Parameters.Add(new MySqlParameter("num", CheckoutId));
+            command.Parameters.Add(new MySqlParameter("num", CheckoutNumber));
             var results = command.ExecuteReader();
 
             bool hasRows = results.Read();
@@ -165,7 +165,7 @@ public class Checkout
         int existingCount;
         using (MySqlCommand command = new MySqlCommand("SELECT * FROM CARD_IN_CHECKOUT WHERE (CHECKOUT_NUMBER = @checkout AND CARD_NUMBER = @card)", conn))
         {
-            command.Parameters.Add(new MySqlParameter("checkout", CheckoutId));
+            command.Parameters.Add(new MySqlParameter("checkout", CheckoutNumber));
             command.Parameters.Add(new MySqlParameter("card", card.CardNumber));
 
             MySqlDataReader results = command.ExecuteReader();
@@ -193,7 +193,7 @@ public class Checkout
             {
                 uint newCount = (uint)existingCount + count;
                 command.Parameters.Add(new MySqlParameter("value", newCount));
-                command.Parameters.Add(new MySqlParameter("checkout", CheckoutId));
+                command.Parameters.Add(new MySqlParameter("checkout", CheckoutNumber));
                 command.Parameters.Add(new MySqlParameter("card", card.CardNumber));
 
                 int rowsAffected = command.ExecuteNonQuery();
@@ -212,7 +212,7 @@ public class Checkout
                    "INSERT INTO CARD_IN_CHECKOUT (CHECKOUT_NUMBER, CARD_NUMBER, COUNT) VALUES (@checkout, @card, @count)",
                    conn))
         {
-            command.Parameters.Add(new MySqlParameter("checkout", CheckoutId));
+            command.Parameters.Add(new MySqlParameter("checkout", CheckoutNumber));
             command.Parameters.Add(new MySqlParameter("card", card.CardNumber));
             command.Parameters.Add(new MySqlParameter("count", count));
 
