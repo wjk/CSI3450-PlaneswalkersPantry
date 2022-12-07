@@ -10,7 +10,7 @@
 4. While still connected as the PlaneswalkersPantry user, copy and paste the contents of the following file into the script
    window: [`src/PlaneswalkersPantry/SqlScripts/DomainDMU.sql`](src/PlaneswalkersPantry/SqlScripts/DomainDMU.sql). Run the entire script.
 5. While still connected as the PlaneswalkersPantry user, copy and paste the contents of the following file into the script
-   window: [`src/PlaneswalkersPantry/SqlScripts/sol4r1s deck.sql`](src/PlaneswalkersPantry/SqlScripts/sol4r1s deck.sql). Run the entire script.
+   window: [`src/PlaneswalkersPantry/SqlScripts/sol4r1s deck.sql`](src/PlaneswalkersPantry/SqlScripts/sol4r1s_deck.sql). Run the entire script.
 6. Install .NET 6. Go to [Microsoft's website](https://dotnet.microsoft.com/en-us/download) and download the .NET 6.0 SDK (not the .NET 7
    SDK, and not the hosting bundle or shared runtime).
 7. Open a terminal and `cd` into the `src/PlaneswalkersPantry` subdirectory. Execute `dotnet run`. A Web browser window should
