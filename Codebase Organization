@@ -1,0 +1,88 @@
+Website - Directory that contains old website file data for when we were first prototyping it.
+Src - Directory containing the files to run the project. 
+  PlaneswalkersPantry - Directory containing all files for the PlaneswalkersPantry project.
+    Controllers - Directory containing C code controller files
+      AccountController.cs
+      CardController.cs
+      CheckoutController.cs
+      DeckController.cs
+      HomeController.cs
+      
+    Models - Directory containing C code model files
+      ViewModels - Directory containing viewmodel C code
+        AddCardToBasketViewModel.cs
+        CardSearchViewModel.cs
+        DeckBrowseViewModel.cs
+        ErrorViewModel.cs
+        LoginModel.cs
+        NewUserModel.cs
+        
+      Account.cs
+      Card.cs
+      CardSet.cs
+      Checkout.cs
+      Database.cs
+      Deck.cs
+      ExtensionMethods.cs
+      SessionAccess.cs
+      
+    Properties - Directory containing json launch file
+      launchSettings.json
+      
+    SqlScripts - SQL Scripts used in the project
+      CreateDatabase.sql
+      DomainDMU.sql
+      SharedCards.sql
+      sol4r1s deck.sql
+      
+    Views - HTML files for all website pages
+      Account - HTML web pages for the account page
+        Index.cshtml
+        Register.cshtml
+        
+      Card - HTML web pages for the card page
+        AddToBasket.cshtml
+        Search.cshtml
+        
+      Checkout - HTML web pages for the checkout page
+        Basket.cshtml
+        CurrentCheckouts.cshtml
+        
+      Deck - HTML web pages for the deck page
+        Index.cshtml
+        
+      Home - HTML web pages for the home page
+        Index.cshtml
+        Privacy.cshtml
+        
+      Shared - HTML web pages for other stuff
+        Error.cshtml
+        _HeaderPartial.cshtml
+        _Layout.cshtml
+        _Layout.cshtml.css
+        _LoginPartial.cshtml
+        _ValidationScriptsPartial.cshtml
+        
+      _ViewImports.cshtml
+      _ViewStart.cshtml
+      
+    wwwroot - Website css, js, and lib files for .net.
+      css
+      js
+      lib
+      favicon.ico
+      
+    PlaneswalkersPantry.csproj
+    Program.cs    
+    appsettings.Development.json
+    appsettings.json
+   
+  PlaneswalkersPantry.sln - MS Visual studio file
+  
+.editorconfig - A dotnet config file
+.gitattributes - github files
+.gitignore - github files
+Directory.Build.props -
+HOW_TO_RUN.md - File explaining how to run the current planeswalker pantry project. 
+LICENSE.txt - Legal licensing file
+README.md - Readme for github
