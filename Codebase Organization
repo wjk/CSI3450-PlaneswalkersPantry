@@ -82,6 +82,7 @@ Src - Directory containing the files to run the project.
 .editorconfig - A dotnet config file
 .gitattributes - github files
 .gitignore - github files
+Codebase Organization - Codebase organization file
 Directory.Build.props -
 HOW_TO_RUN.md - File explaining how to run the current planeswalker pantry project. 
 LICENSE.txt - Legal licensing file
