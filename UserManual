@@ -1,0 +1,11 @@
+1.  User Login: 
+    a.  To login to a user account you must first be registered. On any page one can both register and login to their accounts. When one clicks on the register button they will be brought to a new page and will be asked to enter a Username and a password to create their account. Now that they are registered they can login to their account with the details they used to register.
+
+2.  Card Search:
+    b.  On the main page of the website one could click on the Search for Cards button and be brought to the search cards page. At the top the user can specify whether the search should match all or any parts of the search criteria. The user can search by card name or by text that may be contained within the card body. Lastly before they click search they could also specify which card set the cards belong to. 
+
+3.  Listing Decks:
+    c.  On the main page of the website one could click on the second button next to the search button to be brought to the decks page to see premade decks. 
+
+4.  Check Cards Out: 
+    d.  When one wants to check a card out after they found the cards they wanted in the search they have to click on add to basket for the specific card. They will be brought to a new page where they can decide how many cards they want to borrow. This card and the amount of them will be added to the basket. When you hit add to basket you will be brought to the basket page displaying all cards you have in your basket and the amount of them. Once the user is done adding cards to their basket they will then click check out and be taken to the user’s checkout page where they can see the current cars they have checked out to them. Lastly on this your current checkouts page you will see when the cards are due and a button to return the cards. If this button is clicked the cards will be returned. 
